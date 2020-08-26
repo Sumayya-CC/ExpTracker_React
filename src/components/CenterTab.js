@@ -85,10 +85,12 @@ class FullWidthTabs extends React.Component {
   super(props);
   this.state = {
 
-    category:'',
+    categoryE:'',
+    categoryI:'',
     value:0,
   }
   this.exp = React.createRef()
+  this.inc = React.createRef()
 }
 
   handleChange = (event, newValue) => {
@@ -100,6 +102,11 @@ class FullWidthTabs extends React.Component {
   };
 
   handleChangeExp = (category) => {
+    this.exp.current.handleChange4(category);
+    console.log('selected category center tab');
+  };
+
+  handleChangeInc = (category) => {
     this.exp.current.handleChange4(category);
     console.log('selected category center tab');
   };
@@ -135,12 +142,13 @@ class FullWidthTabs extends React.Component {
 
           {/* Specifying Tab contents */}
         <TabPanel className="reddiv"  value={this.state.value} index={0} dir={this.props.theme.direction}>
-        <InsertExpense message={this.props.message} drawerOpen={this.props.drawerOpen} 
+        <InsertExpense message={this.props.message} drawerOpen={this.props.drawerOpenE} 
         handleChangeExp={this.props.handleChange4} ref={this.exp}/>
 
         </TabPanel>
         <TabPanel className="bluediv"  value={this.state.value} index={1} dir={this.props.theme.direction}>
-        <InsertIncome message={this.props.message}/>
+        <InsertIncome message={this.props.message} drawerOpen={this.props.drawerOpenI} 
+        handleChangeInc={this.props.handleChange4} ref={this.inc}/>
         </TabPanel>
       </SwipeableViews>
     </div>

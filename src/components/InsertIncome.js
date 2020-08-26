@@ -8,8 +8,6 @@ import NumberFormat from 'react-number-format';
 import PropTypes from 'prop-types';
 import Snackbar from '@material-ui/core/Snackbar';
 import Fade from '@material-ui/core/Fade';
-import SelectIncomeCategory from "./SelectIncomeCategory";
- 
  
  
 var date = new Date();
@@ -165,7 +163,6 @@ const styles = theme => (
     };
  
 
-
     
   // class starts here
   class InsertIncome extends React.Component {
@@ -179,8 +176,8 @@ const styles = theme => (
     category:'',
     catId:'',
     catName:'',
-    open: false,
     drawer: false,
+    cat:'',
   }
 }
  
@@ -208,27 +205,19 @@ const styles = theme => (
     
   }
  
-  handleChange4 = (tile)  => {
-    this.setState({ catId: tile.ID });
-    this.setState({ catName: tile.CATEGORY_NAME });
+  handleChange4 = (category)  => {
+    this.setState({ catId: category.ID });
+    this.setState({ catName: category.CATEGORY_NAME });
     console.log(this.state.catId);
-    console.log('category selected');
+    console.log('category selected insert expense');
  
   }
 
-  drawerOpen = () => {
-    this.setState({ drawer: true });
-    console.log('drawer open');
-    console.log(this.state.drawer);
-  
-  };
+  drawerOp = () => {
+    this.props.drawerOpen();
+    console.log('drawer');
+  }
 
-  draweClose = () => {
-    this.setState({ drawer: false });
-    console.log('drawer close');
-    console.log(this.state.drawer);
-  
-  };
   
  
   //Function to handle submit event
@@ -243,9 +232,7 @@ const styles = theme => (
  
   render() {
  
- 
     const { classes } = this.props;
- 
     
     return (
       
@@ -290,19 +277,13 @@ const styles = theme => (
               value={this.state.amount}
               onChange={this.handleChange3}
               InputProps={{
-                inputComponent: NumberFormatCustom,
-              }}
-        />
+                inputComponent: NumberFormatCustom,}}/>
+
             {/* Category field */}
             <TextField label="Category" name='category' id='category'
               required InputLabelProps={{required:false}} value={this.state.catName}          
-              className={classes.textField} onClick={this.drawerOpen}/>
+              className={classes.textField} onClick={this.drawerOp}/>
  
-            <SelectIncomeCategory message={this.props.message} 
-              onSelectedCat={this.handleChange4} 
-              open={this.state.drawer} onClose={this.draweClose}/>
-
-            
  
             {/* Submit button */}
  

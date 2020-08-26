@@ -21,7 +21,9 @@ import './Style.css';
 const useStyles = makeStyles((theme) => ({
    
  drawerPaper:{
-   width:"820px",
+  left: '31.5%',
+  width: '31.5%',
+  //  width:"820px",
    backgroundColor:"#69B5FF",
  
   },
@@ -35,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
    list: {
     width:"421px",
     marginTop: 40,
-    marginLeft:440,
+    marginLeft:20,
   },
    
   fullList: {
@@ -72,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
     },
     
    
-  
   }));
   
   const useStyles1 = makeStyles((theme) => ({
@@ -197,10 +198,6 @@ export default function SelectIncomeCategory(props) {
       console.log("success"+data);
   },[]);
 
-
-  // let gridList = null;
-
-  // if(props.open) {
 
   const gridList = (
     <div>

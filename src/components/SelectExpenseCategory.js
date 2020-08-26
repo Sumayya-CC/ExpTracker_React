@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
    
  drawerPaper:{
   left: '31.5%',
-  width: '31%',
+  width: '31.5%',
   //  width:"2420px",
   backgroundColor:"#F35B8C",
    

@@ -165,11 +165,6 @@ const styles = theme => (
 
     
  
-
-
-
-
-    
   // class starts here
   class InsertExpense extends React.Component {
     // constructers
@@ -237,7 +232,6 @@ const styles = theme => (
   }
  
   render() {
- 
  
     const { classes } = this.props;
     

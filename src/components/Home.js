@@ -5,42 +5,60 @@ import FullWidthTabs from './CenterTab';
 import CustomizedTabs from './Tab';
 import CheckBox from './CheckBox';
 import SelectExpenseCategory from "./SelectExpenseCategory";
+import SelectIncomeCategory from "./SelectIncomeCategory";
 
 class Home extends Component{
     constructor(props){
         super(props);
         this.state = {
-            drawer: false,
-            category: '',
+            drawerE: false,
+            categoryE: '',
+            drawerE: false,
+            categoryE: '',
         }
         this.tab = React.createRef()
     }
 
     
-  drawerOpen = () => {
-    this.setState({ drawer: true });
+  drawerOpenE = () => {
+    this.setState({ drawerE: true });
     console.log('drawer open');
   };
-  draweClose = () => {
-    this.setState({ drawer: false });
+  draweCloseE = () => {
+    this.setState({ drawerE: false });
     console.log('drawer close');
   };
-  selectedCat = (tile) => {
+  selectedCatE = (tile) => {
     console.log('selected category home');
     this.tab.current.handleChangeExp(tile);
+  };
+
+  drawerOpenI = () => {
+    this.setState({ drawerI: true });
+    console.log('drawer open');
+  };
+  draweCloseI = () => {
+    this.setState({ drawerI: false });
+    console.log('drawer close');
+  };
+  selectedCatI = (tile) => {
+    console.log('selected category home');
+    this.tab.current.handleChangeInc(tile);
   };
     
     render(){
         return(
         <div>
         <div className="split1 left1"> <FullWidthTabs ref={this.tab} message={this.props.params.id} 
-            drawerOpen={this.drawerOpen}/> 
+            drawerOpenE={this.drawerOpenE} drawerOpenI={this.drawerOpenI}/> 
         </div>
         <div className="split1 center1"style={{overflowX:"hidden", overflowY:"scroll"}}>
         <div className="split1 style">
         <CheckBox message={this.props.params.id}/>
         <SelectExpenseCategory message={this.props.params.id} 
-              onSelectedCat={this.selectedCat}  open={this.state.drawer} onClose={this.draweClose}/>
+              onSelectedCat={this.selectedCatE}  open={this.state.drawerE} onClose={this.draweCloseE}/>
+        <SelectIncomeCategory message={this.props.params.id} 
+              onSelectedCat={this.selectedCatI}  open={this.state.drawerI} onClose={this.draweCloseI}/>
         </div>
         </div>
         <div className="split1 right1"> 
